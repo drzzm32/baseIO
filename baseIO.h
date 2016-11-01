@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <vadefs.h>
 #include <string.h>
 
 #if defined(WINDOWS)
 #define CRT_SECURE_NO_WARNINGS
+#include <vadefs.h>
 #include <stdlib.h>
 #define clear() system("cls")
 int print(const char* format, ...) {
@@ -31,6 +31,7 @@ int main(int argc, char* argv) {
 }
 
 #elif defined(LINUX)
+#include <stdarg.h>
 #include <stdlib.h>
 #define clear() system("clear")
 int print(const char* format, ...) {
@@ -57,6 +58,7 @@ int main(int argc, char* argv) {
 }
 
 #elif defined(ARDUINO)
+#include <stdarg.h>
 #define IOBUF 128
 #define BACKCOLOR 0x0000
 #define clear() { tft.setCursor(0, 0); tft.fillScreen(BACKCOLOR); }
